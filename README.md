@@ -16,3 +16,5 @@ Ejecutamos el script "cargar_datos.sql" para poder poblar la base de datos con d
 ## Compilación y ejecución de los componentes del servidor y el cliente
 Ejecutamos primeramente el archivo "MultiServer" en el apartado de "Servidor" y luego de esto ejecutamos
 el archivo "Cliente" en el apartado "Cliente"
+## Documentación de los servicios
+Podemos observar los servicios disponibles en el archivo PDF "Documentación de la API"
