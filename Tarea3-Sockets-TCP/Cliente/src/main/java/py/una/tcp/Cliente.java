@@ -15,9 +15,6 @@ import java.net.SocketAddress;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import py.una.bd.Operacion;
-import static py.una.tcp.Menu.menuCliente;
-import static py.una.tcp.Menu.menuError;
-import static py.una.tcp.Menu.menuRespuesta;
 
 /**
  *
@@ -34,7 +31,7 @@ public class Cliente {
             direccionServidor = args[0];
             puertoServidor = Integer.parseInt(args[1]);
         }else if(args.length!=0){
-            menuError("Error en los args");
+            Menu.menuError("Error en los args");
             System.exit(1);
         }
         
@@ -63,14 +60,14 @@ public class Cliente {
             in = new BufferedReader(new InputStreamReader(kkSocket.getInputStream()));
         }catch (SocketTimeoutException e){
             fin = System.currentTimeMillis();
-            menuError("Fallo de Timeout de conexion en " + TimeOutConexion);
-            menuError("Duracion " + (fin-ini));
+            Menu.menuError("Fallo de Timeout de conexion en " + TimeOutConexion);
+            Menu.menuError("Duracion " + (fin-ini));
             System.exit(1);
         }catch (UnknownHostException e) {
-            menuError("Host desconocido");
+            Menu.menuError("Host desconocido");
             System.exit(1);
         } catch (IOException e) {
-            menuError("Error de I/O en la conexion al host");
+            Menu.menuError("Error de I/O en la conexion al host");
             System.exit(1);
         }
         BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
@@ -80,8 +77,8 @@ public class Cliente {
         try{
             while ((fromServer = in.readLine()) != null) {
                 System.out.println("Servidor: " + fromServer);
-                menuRespuesta(new Operacion(fromServer));
-                fromUser = menuCliente();
+                Menu.menuRespuesta(new Operacion(fromServer));
+                fromUser = Menu.menuCliente();
                 if (fromUser != null) {
                     System.out.println("Cliente: " + fromUser.toJSON());
                     //escribimos al servidor
@@ -89,7 +86,7 @@ public class Cliente {
                 }
             }
         }catch(SocketTimeoutException exTime){
-            menuError("Tiempo de espera agotado , no se recibieron datos del servidor " );
+            Menu.menuError("Tiempo de espera agotado , no se recibieron datos del servidor " );
         }
 		
         out.close();

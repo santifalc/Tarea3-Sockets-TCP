@@ -13,9 +13,9 @@ import static java.lang.Boolean.TRUE;
 import java.net.Socket;
 import java.util.ArrayList;
 import org.json.simple.parser.ParseException;
-import py.una.bd.Operacion;
 import py.una.entidad.Nis;
 import py.una.entidad.NisJSON;
+import py.una.bd.Operacion;
 
 /**
  *

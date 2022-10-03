@@ -5,9 +5,10 @@
 package py.una.tcp;
 
 import java.util.Scanner;
-import py.una.bd.Operacion;
+
 import py.una.entidad.Nis;
-import static py.una.entidad.NisJSON.objetoString;
+import py.una.entidad.NisJSON;
+import py.una.bd.Operacion;
 
 /**
  *
@@ -40,7 +41,7 @@ public class Menu {
                 datos.setId(Long.parseLong(scanner.next()));
                 System.out.println("Consumo: ");
                 datos.setConsumo(Integer.parseInt(scanner.next()));
-                cuerpo = objetoString(datos);
+                cuerpo = NisJSON.objetoString(datos);
                 break;
             case 2:
                 datos = new Nis();
@@ -48,7 +49,7 @@ public class Menu {
                 datos.setId(Long.parseLong(scanner.next()));
                 datos.setConsumo(0);
                 datos.setEstado(Boolean.FALSE);
-                cuerpo = objetoString(datos);
+                cuerpo = NisJSON.objetoString(datos);
                 break;
             case 3:
                 datos = new Nis();
@@ -57,17 +58,17 @@ public class Menu {
                 System.out.println("Ingrese consumo del NIS");
                 datos.setConsumo(Integer.parseInt(scanner.next()));
                 datos.setEstado(Boolean.TRUE);
-                cuerpo = objetoString(datos);
+                cuerpo = NisJSON.objetoString(datos);
                 break;
             case 4:
                 datos = new Nis();
                 datos.setEstado(Boolean.TRUE);
-                cuerpo = objetoString(datos);
+                cuerpo = NisJSON.objetoString(datos);
                 break;
             case 5:
                 datos = new Nis();
                 datos.setEstado(Boolean.FALSE);
-                cuerpo = objetoString(datos);
+                cuerpo = NisJSON.objetoString(datos);
                 break;
             default:
                 System.exit(input);
